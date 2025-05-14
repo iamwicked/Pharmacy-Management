@@ -201,7 +201,7 @@ def tracker(request):
                 for item in update:
                     updates.append({'text':item.update_desc,'time':item.timestamp})
                     response = json.dumps({"total_item":total_item,"status":"success","updates":updates,"itemsJson":order[0].items_json},default=str)
-                return HttpResponse(response) 
+                return HttpResponse(response, content_type="application/json") 
             else:    
                 return HttpResponse('{"status":"No item","total_item":total_item}')
         except Exception as e:
